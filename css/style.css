@@ -150,3 +150,41 @@ footer {
   color: #aaa;
   font-size: 0.85rem;
 }
+
+#leagues-section {
+  margin-bottom: 2rem;
+}
+
+#leagues-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.league-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+
+.league-card:hover {
+  background: #d6eaf8;
+}
+
+.league-card img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.league-card span {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1A5276;
+}

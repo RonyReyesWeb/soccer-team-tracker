@@ -17,12 +17,13 @@
   </header>
 
   <main>
-    <section id="search-section">
-      <h2>Search for a Team</h2>
-      <div class="search-bar">
-        <input type="text" id="team-search" placeholder="e.g. Real Madrid, Barcelona..." />
-        <button id="search-btn">Search</button>
-      </div>
+    <section id="leagues-section">
+      <h2>🏆 Select a League</h2>
+      <div id="leagues-list"></div>
+    </section>
+
+    <section id="teams-section">
+      <h2>👕 Teams</h2>
       <div id="search-results"></div>
     </section>
 
@@ -39,22 +40,8 @@
   </footer>
 
   <script type="module">
-    import { searchTeams } from "./js/TeamSearch.mjs";
-
-    const btn = document.getElementById("search-btn");
-    const input = document.getElementById("team-search");
-
-    btn.addEventListener("click", () => {
-      const query = input.value.trim();
-      if (query) searchTeams(query);
-    });
-
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        const query = input.value.trim();
-        if (query) searchTeams(query);
-      }
-    });
+    import { loadLeagues } from "./js/TeamSearch.mjs";
+    loadLeagues();
   </script>
 
 </body>
