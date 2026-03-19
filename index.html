@@ -4,9 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Soccer Team Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <h1>⚽ Soccer Team Tracker</h1>
-  <p>Coming soon...</p>
+
+  <header>
+    <h1>⚽ Soccer Team Tracker</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#favorites">Favorites</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="search-section">
+      <h2>Search for a Team</h2>
+      <div class="search-bar">
+        <input type="text" id="team-search" placeholder="e.g. Real Madrid, Barcelona..." />
+        <button id="search-btn">Search</button>
+      </div>
+      <div id="search-results"></div>
+    </section>
+
+    <section id="favorites">
+      <h2>⭐ Favorite Teams</h2>
+      <div id="favorites-list">
+        <p class="empty-msg">No favorites saved yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Soccer Team Tracker © 2025</p>
+  </footer>
+
+  <script type="module">
+    import { searchTeams } from "./js/TeamSearch.mjs";
+
+    const btn = document.getElementById("search-btn");
+    const input = document.getElementById("team-search");
+
+    btn.addEventListener("click", () => {
+      const query = input.value.trim();
+      if (query) searchTeams(query);
+    });
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        const query = input.value.trim();
+        if (query) searchTeams(query);
+      }
+    });
+  </script>
+
 </body>
 </html>
