@@ -1,5 +1,6 @@
 import ProductData from "./ProductData.mjs";
 import { showSpinner, showMessage } from "./utils.mjs";
+import { addFavorite, removeFavorite, isFavorite, renderFavorites } from "./Favorites.mjs";
 
 const api = new ProductData();
 
@@ -67,7 +68,39 @@ function renderTeams(teams) {
         <h3>${team.name}</h3>
         <p>${team.country || ""}</p>
       </div>
-      <a href="team.html?id=${team.id}" class="view-btn">View Team</a>
+      <div class="card-actions">
+        <a href="team.html?id=${team.id}" class="view-btn">View</a>
+        <button class="fav-toggle-btn" data-team='${JSON.stringify({id: team.id, name: team.name, logo: team.logo, country: team.country})}'>
+          ☆ Save
+        </button>
+      </div>
     </div>
   `).join("");
+
+  updateFavButtons();
+  container.querySelectorAll(".fav-toggle-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const team = JSON.parse(btn.dataset.team);
+      if (isFavorite(team.id)) {
+        removeFavorite(team.id);
+      } else {
+        addFavorite(team);
+      }
+      updateFavButtons();
+      renderFavorites();
+    });
+  });
+}
+
+function updateFavButtons() {
+  document.querySelectorAll(".fav-toggle-btn").forEach(btn => {
+    const team = JSON.parse(btn.dataset.team);
+    if (isFavorite(team.id)) {
+      btn.textContent = "★ Saved";
+      btn.classList.add("fav-saved");
+    } else {
+      btn.textContent = "☆ Save";
+      btn.classList.remove("fav-saved");
+    }
+  });
 }

@@ -14,7 +14,7 @@ export default class ProductData {
   async getData(endpoint) {
     const cacheKey = `cache_${endpoint}`;
     const cached = JSON.parse(localStorage.getItem(cacheKey));
-    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+    const CACHE_TTL = 5 * 60 * 1000; 
 
     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
       console.log("Returning cached data for:", endpoint);

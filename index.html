@@ -1,48 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soccer Team Tracker</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <header>
-    <h1>⚽ Soccer Team Tracker</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#favorites">Favorites</a>
-    </nav>
-  </header>
+    <title>Soccer Team Tracker | Follow Your Favorite Teams</title>
+    <meta
+      name="description"
+      content="Track your favorite soccer teams in real time. View live scores, upcoming fixtures, player statistics, and league standings all in one place."
+    />
+    <meta
+      name="keywords"
+      content="soccer, football, team tracker, live scores, fixtures, standings, players, leagues"
+    />
+    <meta name="author" content="Rony Reyes" />
+    <meta name="robots" content="index, follow" />
 
-  <main>
-    <section id="leagues-section">
-      <h2>🏆 Select a League</h2>
-      <div id="leagues-list"></div>
-    </section>
+    <meta property="og:title" content="Soccer Team Tracker" />
+    <meta
+      property="og:description"
+      content="Follow your favorite soccer teams. Live scores, fixtures, player stats and standings."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://soccer-team-tracker.onrender.com"
+    />
+    <meta
+      property="og:image"
+      content="https://soccer-team-tracker.onrender.com/img/og-image.png"
+    />
 
-    <section id="teams-section">
-      <h2>👕 Teams</h2>
-      <div id="search-results"></div>
-    </section>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Soccer Team Tracker" />
+    <meta
+      name="twitter:description"
+      content="Follow your favorite soccer teams. Live scores, fixtures, player stats and standings."
+    />
 
-    <section id="favorites">
-      <h2>⭐ Favorite Teams</h2>
-      <div id="favorites-list">
-        <p class="empty-msg">No favorites saved yet.</p>
-      </div>
-    </section>
-  </main>
+    <link rel="canonical" href="https://soccer-team-tracker.onrender.com" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-  <footer>
-    <p>Soccer Team Tracker © 2025</p>
-  </footer>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header role="banner">
+      <h1>⚽ Soccer Team Tracker</h1>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="#favorites">Favorites</a>
+      </nav>
+    </header>
 
-  <script type="module">
-    import { loadLeagues } from "./js/TeamSearch.mjs";
-    loadLeagues();
-  </script>
+    <main role="main">
+      <section id="leagues-section" aria-labelledby="leagues-heading">
+        <h2 id="leagues-heading">🏆 Select a League</h2>
+        <div id="leagues-list" role="list" aria-label="Available leagues"></div>
+      </section>
 
-</body>
+      <section id="recently-viewed-section" aria-labelledby="recent-heading">
+        <h2 id="recent-heading">🕐 Recently Viewed</h2>
+        <div
+          id="recently-viewed-list"
+          role="list"
+          aria-label="Recently viewed teams"
+        ></div>
+      </section>
+
+      <section id="teams-section" aria-labelledby="teams-heading">
+        <h2 id="teams-heading">👕 Teams</h2>
+        <div
+          id="search-results"
+          role="list"
+          aria-label="Teams in selected league"
+          aria-live="polite"
+        ></div>
+      </section>
+
+      <section id="favorites" aria-labelledby="favorites-heading">
+        <h2 id="favorites-heading">⭐ Favorite Teams</h2>
+        <div
+          id="favorites-list"
+          role="list"
+          aria-label="Your favorite teams"
+          aria-live="polite"
+        >
+          <p class="empty-msg">No favorites saved yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <p>Soccer Team Tracker © 2026</p>
+    </footer>
+
+    <script type="module">
+      import { loadLeagues } from "./js/TeamSearch.mjs";
+      import { renderFavorites } from "./js/Favorites.mjs";
+      import { renderRecentlyViewed } from "./js/utils.mjs";
+
+      loadLeagues();
+      renderFavorites();
+      renderRecentlyViewed();
+    </script>
+  </body>
 </html>
