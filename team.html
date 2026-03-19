@@ -1,149 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Detail | Soccer Team Tracker</title>
+  <meta name="description" content="View detailed stats, recent results, upcoming fixtures, squad information and league standings for your favorite soccer team." />
+  <meta name="author" content="Rony Reyes" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Team Detail | Soccer Team Tracker" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://soccer-team-tracker.onrender.com/team.html" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Primary SEO -->
-    <title>Team Detail | Soccer Team Tracker</title>
-    <meta
-      name="description"
-      content="View detailed stats, recent results, upcoming fixtures, squad information and league standings for your favorite soccer team."
-    />
-    <meta
-      name="keywords"
-      content="soccer team, football club, player stats, match results, league standings, fixtures"
-    />
-    <meta name="author" content="Rony Reyes" />
-    <meta name="robots" content="index, follow" />
+  <header class="top-nav" role="banner">
+    <div class="nav-brand">
+      <span class="nav-logo">⚽</span>
+      <h1>Soccer Team Tracker</h1>
+    </div>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-link">← Back Home</a>
+    </nav>
+  </header>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Team Detail | Soccer Team Tracker" />
-    <meta
-      property="og:description"
-      content="View detailed stats, results, fixtures and squad info for your favorite soccer team."
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://soccer-team-tracker.onrender.com/team.html"
-    />
-    <meta
-      property="og:image"
-      content="https://soccer-team-tracker.onrender.com/img/og-image.png"
-    />
+  <main role="main" id="main-content">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Team Detail | Soccer Team Tracker" />
-    <meta
-      name="twitter:description"
-      content="View detailed stats, results, fixtures and squad info for your favorite soccer team."
-    />
-
-    <!-- Canonical URL -->
-    <link
-      rel="canonical"
-      href="https://soccer-team-tracker.onrender.com/team.html"
-    />
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header role="banner">
-      <h1>⚽ Soccer Team Tracker</h1>
-      <nav role="navigation" aria-label="Main navigation">
-        <a href="index.html">← Back Home</a>
-      </nav>
-    </header>
-
-    <main role="main">
-      <section id="team-header" aria-labelledby="team-name">
-        <div class="team-hero">
-          <img id="team-logo" src="" alt="Team Logo" />
-          <div>
-            <h2 id="team-name">Loading...</h2>
-            <p id="team-country"></p>
-          </div>
-          <button
-            id="favorite-btn"
-            class="fav-btn"
-            aria-label="Add team to favorites"
-          >
-            ☆ Add to Favorites
-          </button>
+    <!-- Team Header — full width -->
+    <section id="team-header" class="team-header-section" aria-labelledby="team-name">
+      <div class="team-hero">
+        <img id="team-logo" src="" alt="Team Logo" />
+        <div class="team-hero-info">
+          <h2 id="team-name">Loading...</h2>
+          <p id="team-country" class="team-country"></p>
         </div>
-      </section>
-
-      <div class="tabs" role="tablist" aria-label="Team information tabs">
-        <button
-          class="tab-btn active"
-          data-tab="matches"
-          role="tab"
-          aria-selected="true"
-          aria-controls="tab-matches"
-        >
-          📅 Matches
-        </button>
-        <button
-          class="tab-btn"
-          data-tab="players"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tab-players"
-        >
-          👤 Players
-        </button>
-        <button
-          class="tab-btn"
-          data-tab="standings"
-          role="tab"
-          aria-selected="false"
-          aria-controls="tab-standings"
-        >
-          📊 Standings
+        <button id="favorite-btn" class="fav-btn" aria-label="Add team to favorites">
+          ☆ Add to Favorites
         </button>
       </div>
+    </section>
 
-      <section
-        id="tab-matches"
-        class="tab-content active"
-        role="tabpanel"
-        aria-labelledby="matches-tab"
-        aria-live="polite"
-      >
-        <h3>Recent & Upcoming Matches</h3>
+    <!-- Mobile: Tabbed interface -->
+    <div class="tabs" role="tablist" aria-label="Team information tabs">
+      <button class="tab-btn active" data-tab="matches"
+              role="tab" aria-selected="true" aria-controls="tab-matches">
+        📅 Matches
+      </button>
+      <button class="tab-btn" data-tab="players"
+              role="tab" aria-selected="false" aria-controls="tab-players">
+        👤 Players
+      </button>
+      <button class="tab-btn" data-tab="standings"
+              role="tab" aria-selected="false" aria-controls="tab-standings">
+        📊 Standings
+      </button>
+    </div>
+
+    <!-- Desktop: Three panels side by side -->
+    <div class="desktop-panels">
+
+      <!-- Panel 1: Recent Results -->
+      <section class="panel" id="tab-matches" 
+               role="tabpanel" aria-live="polite">
+        <h3 class="panel-title">📅 Matches</h3>
         <div id="matches-list"></div>
       </section>
 
-      <section
-        id="tab-players"
-        class="tab-content"
-        role="tabpanel"
-        aria-labelledby="players-tab"
-        aria-live="polite"
-      >
-        <h3>Squad</h3>
+      <!-- Panel 2: Top Players -->
+      <section class="panel" id="tab-players" 
+               role="tabpanel" aria-live="polite">
+        <h3 class="panel-title">👤 Players</h3>
         <div id="players-list"></div>
       </section>
 
-      <section
-        id="tab-standings"
-        class="tab-content"
-        role="tabpanel"
-        aria-labelledby="standings-tab"
-        aria-live="polite"
-      >
-        <h3>League Standings</h3>
+      <!-- Panel 3: Standings -->
+      <section class="panel" id="tab-standings" 
+               role="tabpanel" aria-live="polite">
+        <h3 class="panel-title">📊 Standings</h3>
         <div id="standings-list"></div>
       </section>
-    </main>
 
-    <footer role="contentinfo">
-      <p>Soccer Team Tracker © 2026</p>
-    </footer>
+    </div>
 
-    <script type="module" src="js/team-page.mjs"></script>
-  </body>
+  </main>
+
+  <!-- Mobile bottom nav -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" class="bottom-nav-item" aria-label="Home">
+      <span>🏠</span>
+      <small>Home</small>
+    </a>
+    <a href="#tab-matches" class="bottom-nav-item active" aria-label="Matches">
+      <span>📅</span>
+      <small>Matches</small>
+    </a>
+    <a href="#tab-players" class="bottom-nav-item" aria-label="Players">
+      <span>👤</span>
+      <small>Players</small>
+    </a>
+    <a href="#tab-standings" class="bottom-nav-item" aria-label="Standings">
+      <span>📊</span>
+      <small>Standings</small>
+    </a>
+  </nav>
+
+  <script type="module" src="js/team-page.mjs"></script>
+
+</body>
 </html>

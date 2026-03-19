@@ -1,109 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soccer Team Tracker | Follow Your Favorite Teams</title>
+  <meta name="description" content="Track your favorite soccer teams in real time. View live scores, upcoming fixtures, player statistics, and league standings all in one place." />
+  <meta name="keywords" content="soccer, football, team tracker, live scores, fixtures, standings, players, leagues" />
+  <meta name="author" content="Rony Reyes" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Soccer Team Tracker" />
+  <meta property="og:description" content="Follow your favorite soccer teams. Live scores, fixtures, player stats and standings." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://soccer-team-tracker.onrender.com" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Soccer Team Tracker" />
+  <meta name="twitter:description" content="Follow your favorite soccer teams." />
+  <link rel="canonical" href="https://soccer-team-tracker.onrender.com" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <title>Soccer Team Tracker | Follow Your Favorite Teams</title>
-    <meta
-      name="description"
-      content="Track your favorite soccer teams in real time. View live scores, upcoming fixtures, player statistics, and league standings all in one place."
-    />
-    <meta
-      name="keywords"
-      content="soccer, football, team tracker, live scores, fixtures, standings, players, leagues"
-    />
-    <meta name="author" content="Rony Reyes" />
-    <meta name="robots" content="index, follow" />
+  <!-- TOP NAV — Desktop only -->
+  <header class="top-nav" role="banner">
+    <div class="nav-brand">
+      <span class="nav-logo">⚽</span>
+      <h1>Soccer Team Tracker</h1>
+    </div>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="nav-link active">🏠 Home</a>
+      <a href="#favorites" class="nav-link">⭐ Favorites</a>
+      <a href="#leagues-section" class="nav-link">🏆 Leagues</a>
+    </nav>
+  </header>
 
-    <meta property="og:title" content="Soccer Team Tracker" />
-    <meta
-      property="og:description"
-      content="Follow your favorite soccer teams. Live scores, fixtures, player stats and standings."
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://soccer-team-tracker.onrender.com"
-    />
-    <meta
-      property="og:image"
-      content="https://soccer-team-tracker.onrender.com/img/og-image.png"
-    />
+  <main role="main" id="main-content">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Soccer Team Tracker" />
-    <meta
-      name="twitter:description"
-      content="Follow your favorite soccer teams. Live scores, fixtures, player stats and standings."
-    />
+    <!-- DESKTOP: Two column layout -->
+    <div class="desktop-layout">
 
-    <link rel="canonical" href="https://soccer-team-tracker.onrender.com" />
-    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+      <!-- LEFT COLUMN -->
+      <aside class="left-column">
 
-  <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header role="banner">
-      <h1>⚽ Soccer Team Tracker</h1>
-      <nav role="navigation" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="#favorites">Favorites</a>
-      </nav>
-    </header>
+        <!-- Search -->
+        <section id="search-section" aria-labelledby="search-heading">
+          <h2 id="search-heading" class="section-title">🔍 Search Teams</h2>
+          <div class="search-bar">
+            <input type="text" id="team-search" 
+                   placeholder="e.g. Real Madrid..." 
+                   aria-label="Search for a soccer team" />
+            <button id="search-btn" aria-label="Search">Go</button>
+          </div>
+          <div id="search-results" role="list" aria-live="polite"></div>
+        </section>
 
-    <main role="main">
-      <section id="leagues-section" aria-labelledby="leagues-heading">
-        <h2 id="leagues-heading">🏆 Select a League</h2>
-        <div id="leagues-list" role="list" aria-label="Available leagues"></div>
-      </section>
+        <!-- Favorites -->
+        <section id="favorites" aria-labelledby="favorites-heading">
+          <h2 id="favorites-heading" class="section-title">⭐ Favorite Teams</h2>
+          <div id="favorites-list" role="list" aria-live="polite">
+            <p class="empty-msg">No favorites saved yet.</p>
+          </div>
+        </section>
 
-      <section id="recently-viewed-section" aria-labelledby="recent-heading">
-        <h2 id="recent-heading">🕐 Recently Viewed</h2>
-        <div
-          id="recently-viewed-list"
-          role="list"
-          aria-label="Recently viewed teams"
-        ></div>
-      </section>
+        <!-- Recently Viewed -->
+        <section id="recently-viewed-section" aria-labelledby="recent-heading">
+          <h2 id="recent-heading" class="section-title">🕐 Recently Viewed</h2>
+          <div id="recently-viewed-list" role="list"></div>
+        </section>
 
-      <section id="teams-section" aria-labelledby="teams-heading">
-        <h2 id="teams-heading">👕 Teams</h2>
-        <div
-          id="search-results"
-          role="list"
-          aria-label="Teams in selected league"
-          aria-live="polite"
-        ></div>
-      </section>
+      </aside>
 
-      <section id="favorites" aria-labelledby="favorites-heading">
-        <h2 id="favorites-heading">⭐ Favorite Teams</h2>
-        <div
-          id="favorites-list"
-          role="list"
-          aria-label="Your favorite teams"
-          aria-live="polite"
-        >
-          <p class="empty-msg">No favorites saved yet.</p>
-        </div>
-      </section>
-    </main>
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
 
-    <footer role="contentinfo">
-      <p>Soccer Team Tracker © 2026</p>
-    </footer>
+        <!-- Leagues -->
+        <section id="leagues-section" aria-labelledby="leagues-heading">
+          <h2 id="leagues-heading" class="section-title">🏆 Select a League</h2>
+          <div id="leagues-list" role="list" aria-label="Available leagues"></div>
+        </section>
 
-    <script type="module">
-      import { loadLeagues } from "./js/TeamSearch.mjs";
-      import { renderFavorites } from "./js/Favorites.mjs";
-      import { renderRecentlyViewed } from "./js/utils.mjs";
+        <!-- Teams -->
+        <section id="teams-section" aria-labelledby="teams-heading">
+          <h2 id="teams-heading" class="section-title">👕 Teams</h2>
+          <div id="teams-list" role="list" aria-live="polite"></div>
+        </section>
 
-      loadLeagues();
-      renderFavorites();
-      renderRecentlyViewed();
-    </script>
-  </body>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BOTTOM NAV — Mobile only -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html" class="bottom-nav-item active" aria-label="Home">
+      <span>🏠</span>
+      <small>Home</small>
+    </a>
+    <a href="#leagues-section" class="bottom-nav-item" aria-label="Leagues">
+      <span>🏆</span>
+      <small>Leagues</small>
+    </a>
+    <a href="#favorites" class="bottom-nav-item" aria-label="Favorites">
+      <span>⭐</span>
+      <small>Favorites</small>
+    </a>
+    <a href="#recently-viewed-section" class="bottom-nav-item" aria-label="Recent">
+      <span>🕐</span>
+      <small>Recent</small>
+    </a>
+  </nav>
+
+  <script type="module">
+    import { loadLeagues } from "./js/TeamSearch.mjs";
+    import { renderFavorites } from "./js/Favorites.mjs";
+    import { renderRecentlyViewed } from "./js/utils.mjs";
+
+    loadLeagues();
+    renderFavorites();
+    renderRecentlyViewed();
+
+    // Search functionality
+    const btn = document.getElementById("search-btn");
+    const input = document.getElementById("team-search");
+
+    btn.addEventListener("click", () => {
+      const query = input.value.trim();
+      if (query) console.log("Search:", query);
+    });
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        const query = input.value.trim();
+        if (query) console.log("Search:", query);
+      }
+    });
+  </script>
+
+</body>
 </html>
